@@ -1,8 +1,9 @@
 import React from "react";
 import { connect } from "react-redux";
 import { actionCreators }  from './store'
-import { HeaderWrapper, Logo, Nav, NavItem, NavSearch, Addtion, Button, SearchWrapper } from './style'
+import { HeaderWrapper, Logo, Nav, NavItem, NavSearch, Addtion, Button, SearchWrapper, SearchInfo, SearchInfoTitle, SearchInfoSwitch, SearchInfoItem, SearchInfoList } from './style'
 import { CSSTransition } from 'react-transition-group'
+
 
 
 const Header = (props) => {
@@ -30,6 +31,7 @@ const Header = (props) => {
                         </NavSearch>
                     </CSSTransition>
                     <i className={props.focused ? 'focused iconfont' : 'iconfont'}>&#xe614;</i>
+                    {getSearchInfo(props.focused)}
                 </SearchWrapper>  
             </Nav>
             <Addtion>
@@ -41,6 +43,30 @@ const Header = (props) => {
             </Addtion>
         </HeaderWrapper>
     )
+}
+
+const getSearchInfo = (show) => {
+    if(show) {
+        return (
+            <SearchInfo>
+                <SearchInfoTitle>
+                    热门搜索
+                    <SearchInfoSwitch>换一批</SearchInfoSwitch>
+                </SearchInfoTitle>
+                <SearchInfoList>
+                    <SearchInfoItem>教育</SearchInfoItem>
+                    <SearchInfoItem>教育</SearchInfoItem>
+                    <SearchInfoItem>教育</SearchInfoItem>
+                    <SearchInfoItem>教育</SearchInfoItem>
+                    <SearchInfoItem>教育</SearchInfoItem>
+                    <SearchInfoItem>教育</SearchInfoItem>
+                    <SearchInfoItem>教育</SearchInfoItem>
+                </SearchInfoList>
+            </SearchInfo>
+        )
+    }else{
+        return null;
+    }
 }
 
 const mapStateToProps = (state) => {
