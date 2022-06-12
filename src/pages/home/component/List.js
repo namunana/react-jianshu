@@ -9,7 +9,7 @@ class List extends Component {
             <div>
                 {list.map((item) => {
                     return (
-                        <ListItem>
+                        <ListItem key={item.get('id')}>
                             <img className="pic" alt="" src={item.get('imgUrl')} />
                             <ListInfo>
                                 <h3 className="title">{item.get('title')}</h3>
