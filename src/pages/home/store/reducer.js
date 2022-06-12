@@ -39,6 +39,24 @@ const defaultState = fromJS({
             desc: '文/弋一 “我是90后，我刚走出校园，我加班到深夜，却只拿实习工资，每天累成狗。” “我是90后，我参加工作2年，我没有存款，没有社会地位，甚至...',
             imgUrl: 'https://upload-images.jianshu.io/upload_images/6637613-59ea1ce71dd2fd15.jpg?imageMogr2/auto-orient/strip|imageView2/1/w/360/h/240'
         }
+    ],
+    recommendList: [
+        {
+            id: 1,
+            imgUrl: 'https://sg-assets.jianshu.io/assets/web/banner-s-daily-e6f6601abc495573ad37f2532468186f.png'
+        },
+        {
+            id: 2,
+            imgUrl: 'https://sg-assets1.jianshu.io/assets/web/banner-s-club-aa8bdf19f8cf729a759da42e4a96f366.png'
+        },
+        {
+            id: 3,
+            imgUrl: 'https://sg-assets1.jianshu.io/assets/web/banner-s-7-1a0222c91694a1f38e610be4bf9669be.png'
+        },
+        {
+            id: 4,
+            imgUrl: 'https://sg-assets1.jianshu.io/assets/web/banner-s-5-4ba25cf5041931a0ed2062828b4064cb.png'
+        }
     ]
 })
 
