@@ -1,4 +1,5 @@
 import { fromJS } from 'immutable'
+import * as constants from './constants'
 
 //immutable对象
 const defaultState = fromJS({
@@ -10,11 +11,11 @@ const defaultState = fromJS({
 // eslint-disable-next-line import/no-anonymous-default-export
 export default (state = defaultState, action) => {
     switch(action.type){
-        case 'change_home':
+        case constants.CHANGE_HOME:
             return state.merge({
-                topicList: fromJS(action.topicList),
-                articleList: fromJS(action.articleList),
-                recommendList: fromJS(action.recommendList)
+                topicList: action.topicList,
+                articleList: action.articleList,
+                recommendList: action.recommendList
             })
         default:
             return state;

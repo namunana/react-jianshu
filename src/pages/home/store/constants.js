@@ -1,0 +1,1 @@
+export const CHANGE_HOME = "home/change_home"
