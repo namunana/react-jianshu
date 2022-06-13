@@ -5,7 +5,8 @@ import * as constants from './constants'
 const defaultState = fromJS({
     topicList: [],
     articleList: [],
-    recommendList: []
+    recommendList: [],
+    articlePage: 1
 })
 
 // eslint-disable-next-line import/no-anonymous-default-export
@@ -16,6 +17,12 @@ export default (state = defaultState, action) => {
                 topicList: action.topicList,
                 articleList: action.articleList,
                 recommendList: action.recommendList
+            })
+
+        case constants.ADD_HOME_LIST:
+            return state.merge({
+                articleList: state.get('articleList').concat(action.list),
+                articlePage: action.nextPage
             })
         default:
             return state;
