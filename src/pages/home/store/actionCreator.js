@@ -14,6 +14,11 @@ export const addHomeList = (list,nextPage) => ({
     nextPage
 })
 
+export const toggleTopShow = (show) =>({
+    type: constants.TOGGLE_SCROLL_TOP,
+    show: fromJS(show)
+})
+
 export const getChangeHome = () =>{
     return (dispatch) =>{
         axios.get('/api/home.json').then((res) => {
@@ -37,3 +42,4 @@ export const getMoreList = (page) =>{
         })   
     }
 }
+
