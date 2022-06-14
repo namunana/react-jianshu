@@ -1,5 +1,4 @@
 import { fromJS } from 'immutable'
-import { act } from 'react-dom/test-utils'
 import * as constants from './constants'
 
 //immutable对象
