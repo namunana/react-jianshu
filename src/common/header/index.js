@@ -2,13 +2,14 @@ import React, {Component} from "react";
 import { connect } from "react-redux";
 import { Link } from 'react-router-dom'
 import { actionCreators }  from './store'
+import { actionCreator as loginActionCreator } from "../../pages/login/store";
 import { HeaderWrapper, Logo, Nav, NavItem, NavSearch, Addtion, Button, SearchWrapper, SearchInfo, SearchInfoTitle, SearchInfoSwitch, SearchInfoItem, SearchInfoList } from './style'
 import { CSSTransition } from 'react-transition-group'
 
 class Header extends Component {
     
     render() {
-        const {focused, handleInputFocus, handleInputBlur, list } = this.props
+        const {focused, handleInputFocus, handleInputBlur, list, login, logout } = this.props
         return(
             <HeaderWrapper>
                 <Link to='/'>
@@ -20,7 +21,11 @@ class Header extends Component {
                     <NavItem className="right">
                         <i className="iconfont">&#xe636;</i>
                     </NavItem>
-                    <NavItem className="right">登录</NavItem>
+                    { 
+                        login ? 
+                            <NavItem onClick={logout} className="right logout">退出</NavItem> :  
+                            <Link to='/login'><NavItem className="right">登录</NavItem></Link>
+                    }
                     <SearchWrapper>
                         <CSSTransition
                             in={focused}
@@ -91,7 +96,8 @@ const mapStateToProps = (state) => {
         list: state.get('header').get('list'),
         page: state.get('header').get('page'),
         totalPage: state.get('header').get('totalPage'),
-        mouseIn: state.get('header').get('mouseIn')
+        mouseIn: state.get('header').get('mouseIn'),
+        login: state.get('login').get('login')
     }
 }
 
@@ -130,6 +136,10 @@ const mapDispachToProps = (dispatch) => {
             }else{
                 dispatch(actionCreators.changePage(1))
             }
+        },
+
+        logout() {
+            dispatch(loginActionCreator.logout())
         }
     }
 }
