@@ -1,29 +1,26 @@
-import React, {PureComponent} from "react";
+import React, {useEffect} from "react";
 import { DetailWrapper, Header, Content } from './style'
 import {connect} from 'react-redux'
 import {actionCreator} from './store'
+import { useParams } from 'react-router-dom';
 
+function Detail(props){
+    const {title, content,getDetail} = props
+    const { id } = useParams();
 
-
-class Detail extends PureComponent {
-
-    render() {
-        const {title, content} = this.props
-        return(
-            <DetailWrapper>
-                <Header>{title}</Header>
-                <Content dangerouslySetInnerHTML={{__html: content}}>
-                </Content> 
-            </DetailWrapper>
-        )
-
+    useEffect(() => {
+        getDetail(id);
+        console.log(id)
+    },[]);
         
-    }
-
-    componentDidMount() {
-        this.props.getDetail()
-    }
+    return(
+        <DetailWrapper>
+            <Header>{title}</Header>
+            <Content dangerouslySetInnerHTML={{__html: content}}></Content>             
+        </DetailWrapper>
+    )
 }
+
 
 const mapStateToProps = (state) =>({
     title: state.getIn(['detail','title']),
@@ -32,8 +29,8 @@ const mapStateToProps = (state) =>({
 
 const mapDispatch = (dispatch) => {
     return {
-        getDetail(){
-            dispatch(actionCreator.getDetail())
+        getDetail(id){
+            dispatch(actionCreator.getDetail(id))
         }
     }
 }
