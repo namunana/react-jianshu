@@ -2,6 +2,7 @@ import styled from 'styled-components'
 import logoPic from '../../static/logo.png'
 
 export const HeaderWrapper = styled.div`
+  z-index: 1;
   position: relative;
   width: 1500px;
   margin: 0 auto;
